@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Upload a wisdom</title>
+        <link rel="stylesheet" href="/static/fortune.css" type="text/css">
+    </head>
+    <body>
+        <div>
+            <div class="header bottom-shadow">
+                <div id="message">
+    				<a href="/"><h1>Web fortune teller</h1></a>
+    				<p style="font-size: smaller">The ultimate quotes source for every need</p>
+    			</div>
+    			<br/>
+    			<br/>
+            </div>
+            
+            <div class="navigation bottom-shadow">
+    			<a href="/tell">Wisdom of a day</a>
+    			&nbsp;|&nbsp;
+    			<a href="/upload">Upload</a>
+    			&nbsp;|&nbsp;
+    			<a href="/scripts">Script?</a>
+    		</div>
+    		
+    		<br clear="all" />
+
+    		<div class="content">
+    		
+    		    <span>
+    		        Here you can upload wisdom to share. The wisdom files simply texts with once wisdom per line. The actual lines can be formatted as <i>markdown</i> or plain text. You'll be able to browse through your uploads and remove specific wisdoms as needed.
+    		    </span>
+            </div>
+            
+            <form action="{{ upload_url }}" method="POST" enctype="multipart/form-data">
+                
+                <fieldset class="main">
+                    <legend>Upload form</legend> 
+                    <fieldset class="nested">
+                        <ol>
+                            <li>
+                                <label for="file">From your computer</label>
+                                <input type='file' name='file' id='file' />
+                            </li>
+                            <li>
+                                <label for="source">Give it a source name</label>
+                                <input type='textfield' id="source" name='source' />
+                            </li>
+                            <li>
+                                <label for="format">Format</label>
+                                <input id="format" type="radio" name="format" value="plain" /> Plain text
+                                <input id="format" type="radio" name="format" value="markdown" /> Markdown
+                            </li>
+                        </ol>
+                    </fieldset>
+                    
+                    <div class="buttonsContainer">
+                        <input class="button" type="submit" name="submit" value="Upload"/> 
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+        
+        <div style="text-align:center">
+            <img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+        </div>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Fortune scripts</title>
+        <link rel="stylesheet" href="/static/fortune.css" type="text/css">
+    </head>
+    <body>
+        <div>
+            <div class="header bottom-shadow">
+                <div id="message">
+    				<a href="/"><h1>Web fortune teller</h1></a>
+    				<p style="font-size: smaller">The ultimate quotes source for every need</p>
+    			</div>
+    			<br/>
+    			<br/>
+            </div>
+            
+            <div class="navigation bottom-shadow">
+    			<a href="/tell">Wisdom of a day</a>
+    			&nbsp;|&nbsp;
+    			<a href="/upload">Upload</a>
+    			&nbsp;|&nbsp;
+    			<a href="/scripts">Script?</a>
+    		</div>
+    		
+    		<br clear="all" />
+
+    		<div class="content">
+    		
+    		    <span>
+    		        Web fortune teller is developer friendly! You can use it to power your websites and applications with everyday wisdom absolutely for free. 
+    		    </span>
+    		    <span>
+    		        Getting a wisdom programmatically is very simple. All you need to do is to issue a GET request to <a href="/tell">this url</a>. Here is a list of arguments you can use to tailor the result for your needs. All of them are optional:
+    		        <ul>
+    		            <li>
+    		                <b>owner</b> - specify a person who uploaded a quote, it's nickname in google's profile. It can be you or anybody else. Default: everybody
+    		            </li>
+    		            <li>
+    		                <b>format</b> - in which format you want to have a response. Currently these formats are supported:
+    		                <ul>
+    		                    <li><b>html</b> - an html page, the default one</li>
+    		                    <li><b>json</b> - a json encoded dictionary</li>
+    		                    <li><b>jsonp</b> - a json with padding for cross-domain calls. Requires a <i>callback</i> argument</li>
+    		                </ul>
+    		            </li>
+    		            <li><b>callback</b> or <b>jsonp</b> - a callback function used to parse json on your page.</li>
+    		        </ul>
+    		    </span>
+            </div>
+        </div>
+        
+        <div style="text-align:center">
+            <img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+        </div>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+application: web-fortune-teller
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+  
+- url: /static/fortune.css
+  static_files: static/fortune.css
+  upload: static/fortune.css
+
+- url: /scripts
+  static_files: static/scripts.html
+  upload: static/scripts.html
+
+- url: .*
+  script: main.py

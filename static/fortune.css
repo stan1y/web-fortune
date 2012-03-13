@@ -1,0 +1,135 @@
+body {
+	font-family: 'Lucida Grande', verdana, arial, helvetica, sans-serif;
+	background: #EDEDED;
+	min-width: 800px;
+	max-width: 1200px;
+	margin: auto;
+	display: block;
+}
+
+body a { color: #6a82ad; }
+
+pre { font-size: small; }
+
+table {
+  text-align: left;
+  font-size: 14px;
+  font-family: arial;
+  border-collapse: collapse;
+}
+
+table th {
+  border: 1px solid #d0d0d0;
+  border-left-color: #eee;
+  background-color: #ededed;
+}
+
+table td {
+  padding: 4px 3px 4px 5px;
+  border-style: none solid solid;
+  border-width: 1px;
+  border-color: #ededed;
+}
+
+
+/* ---------------- forms -------------------- */
+
+fieldset.main 
+{  
+    margin: 1.5em 0 0 1.5em;  
+    padding: 1em 0 0 0;
+    width: 500px;
+    font-size: .9em;    
+}
+
+fieldset.main legend
+{  
+    margin-left: 1em;  
+    color: #000000;  
+    font-weight: bold;    
+}
+
+fieldset.main ol 
+{  
+    padding: 1em 1em 0 1em;  
+    list-style: none;
+}
+
+fieldset.main li 
+{  
+    padding-bottom: .5em;
+}
+
+fieldset.main ol li label 
+{  
+    float: left;
+    width: 12em;        
+    margin-right: 1em;
+}
+
+input.button
+{                                  
+    /* border-style: none; */
+    width: 6em;
+    height: 2.5em;
+}
+
+div.buttonsContainer
+{
+    float: right;
+    margin: 1em 1em 1em 0;
+}
+
+/* ---------------- layout -------------------- */
+
+.bottom-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+div.header {
+    text-align: center;
+    border-radius: 10px;
+	white-space:nowrap;
+	list-style-type:none;
+	color: #6a82ad;
+	margin-top: 5px;
+	padding-top: 15px;
+	margin-left:auto; margin-right:auto;
+	width: auto;
+	background-color: #343434;
+	white-space:nowrap;
+	list-style-type:none;
+}
+
+div.header a {
+    text-decoration:none;
+}
+
+div.navigation {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+	background-color: #343434;
+	color: White;
+	font-size: 12px;
+	text-align: center;
+	padding-bottom: 5px;
+	margin-left:auto; margin-right:auto;
+	width: 400px;
+}
+div.navigation a { color: LightGray; }
+div.navigation a:hover { color: White; }
+
+div.content {
+	margin: 40px auto auto 40px;
+	text-align: left;
+}
+
+div.content table{
+    padding: 5px;
+}
+
+div.pager {
+    text-align: center;
+}
