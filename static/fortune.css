@@ -107,6 +107,11 @@ div.header a {
     text-decoration:none;
 }
 
+div.footer {
+    text-align: right;
+    font-size: 11px;
+}
+
 div.navigation {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;

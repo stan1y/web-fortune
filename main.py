@@ -26,12 +26,7 @@ class UploadHandler(webapp.RequestHandler):
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        if not user:
-            self.redirect(users.create_login_url("/"))
-            return
-            
-        username = user.nickname()
+        
         page_num = self.request.get('page_num')
         if not page_num: 
             page_num = 1
@@ -42,12 +37,26 @@ class MainHandler(webapp.RequestHandler):
             page_size = 50
         else:
             page_size = int(page_size)
-        wisdoms_count = Wisdom.all().filter("owner =", user).count()
-        wisdoms_page = Wisdom.all().fetch(offset = (page_num - 1) * page_size, limit = page_size )
+        
+        user = users.get_current_user()
+        if user:
+            username = user.nickname()
+            wisdoms_count = Wisdom.all().filter("owner =", user).count()
+            wisdoms_page = Wisdom.all().fetch(offset = (page_num - 1) * page_size, limit = page_size )
+        else:
+            username = None
+            wisdoms_page = None
+            wisdoms_count = 0
+
+        total_wisdoms_count = Wisdom.all().count()
+        
         self.response.out.write(template.render("templates/index.html", {
             "username" : username,
+            "login_url" : users.create_login_url("/"),
+            "logout_url" : users.create_logout_url("/"),
             "wisdoms_count" : wisdoms_count,
             "wisdoms_page" : wisdoms_page,
+            "total_wisdom_count": total_wisdoms_count,
             "page_size": page_size,
             "page_num": page_num,
             "first_page": page_num == 1,

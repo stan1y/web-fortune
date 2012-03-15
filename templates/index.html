@@ -15,6 +15,10 @@
             </div>
             
             <div class="navigation bottom-shadow">
+                {% if username %}
+                    <a href="{{ logout_url }}">Log out</a>
+                    &nbsp;|&nbsp;
+                {% endif %}
     			<a href="/tell">Wisdom of a day</a>
     			&nbsp;|&nbsp;
     			<a href="/upload">Upload</a>
@@ -25,59 +29,64 @@
     		<br clear="all" />
 
     		<div class="content">
-    		
-    		    Welcome to the fortune teller machine, {{ username }}. Here you can read an everyday wisdom or share it with others. Fortune teller will randomly pick a wisdom every time you ask for it and you can even get it in a various formats. Also you can filter it to give you only what you (or someone else) uploaded or completely random one from everybody.
-            </div>
-            
-            {% if wisdoms_count %}
-                <div class="content">
-                    Currently you have uploaded {{ wisdoms_count }} wisdoms.
-                </div>
-
-                <br/>
-                <div class="pager">
-                    {% if not first_page %}
-                        <a href="/?page_num={{ prev_page }}&amp;page_size={{ page_size }}">Previous</a>
-                        &nbsp;
-                    {% endif %}
-                    Page #{{ page_num }}, size {{ page_size }}
-                    &nbsp;
-                    <a href="/?page_num={{ next_page }}&amp;page_size={{ page_size }}">Next</a>
-                    <br/>
-                    Set size:
-                    <a href="/?page_num={{ page_num }}&amp;page_size=10">10</a>,
-                    <a href="/?page_num={{ page_num }}&amp;page_size=50">50</a>,
-                    <a href="/?page_num={{ page_num }}&amp;page_size=100">100</a>
-                </div>
-            
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Source</th>
-                        <th>Uploaded on</th>
-                        <th>Format</th>
-                        <th>Text</th>
-                    </tr>
-                    {% for wisdom in wisdoms_page %}
-                    <tr>
-                        <td><a href="#" onclick=""><small>Remove</small></a></td>
-                        <td>{{ wisdom.source }}</td>
-                        <td>{{ wisdom.uploadedOn }}</td>
-                        <td>{{ wisdom.format }}</td>
-                        <td><pre>{{ wisdom.text }}</pre></td>
-                    </tr>
-                    {% endfor %}
-                </table>
+    		    {% if username %}
+        		    Welcome to the fortune teller machine, {{ username }}. Here you can read an everyday wisdom or share it with others. Fortune teller will randomly pick a wisdom every time you ask for it and you can even get it in a various formats. Also you can filter it to give you only what you (or someone else) uploaded or completely random one from everybody.
+        		{% else %}
+        		    Welcome to the fortune teller machine. Here you can read an everyday wisdom or share it with others. Fortune teller will randomly pick a wisdom every time you ask for it and you can even get it in a various formats. Also you can filter it to give you only what you (or someone else) uploaded or completely random one from everybody. You need to <a href="{{ login_url }}">login</a> to browse and upload wisdom.
+        		{% endif %}
+        		
+        		<br />
+        		<br />
+        		
+        		Currently there are {{ total_wisdom_count }} wisdoms known. 
+                {% if username %}
+                    You have uploaded {{ wisdoms_count }} wisdoms.
+                {% else %}
+                    You haven't uploaded any wisdom so far. But you can get yourself some <a href="/tell">wisdom</a> anyway.
+                {% endif %}
                 
-            {% else %}
-                <div class="content">
-                    You haven't uploaded any wisdom so far. But you can get yourself some wisdom anyway. <a href="/tell">Here</a>
-                </div>
-            {% endif %}
-            
+                <br/>
+                <br/>
+                
+                {% if wisdoms_count %}
+                    <div class="pager">
+                        {% if not first_page %}
+                            <a href="/?page_num={{ prev_page }}&amp;page_size={{ page_size }}">Previous</a>
+                            &nbsp;
+                        {% endif %}
+                        Page #{{ page_num }}, size {{ page_size }}
+                        &nbsp;
+                        <a href="/?page_num={{ next_page }}&amp;page_size={{ page_size }}">Next</a>
+                        <br/>
+                        Set size:
+                        <a href="/?page_num={{ page_num }}&amp;page_size=10">10</a>,
+                        <a href="/?page_num={{ page_num }}&amp;page_size=50">50</a>,
+                        <a href="/?page_num={{ page_num }}&amp;page_size=100">100</a>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Source</th>
+                            <th>Uploaded on</th>
+                            <th>Format</th>
+                            <th>Text</th>
+                        </tr>
+                        {% for wisdom in wisdoms_page %}
+                        <tr>
+                            <td><a href="#" onclick=""><small>Remove</small></a></td>
+                            <td>{{ wisdom.source }}</td>
+                            <td>{{ wisdom.uploadedOn }}</td>
+                            <td>{{ wisdom.format }}</td>
+                            <td><pre>{{ wisdom.text }}</pre></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
+            </div>
         </div>
-        <div>
-            <img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+        <div class="footer">
+            via <a href="http://www.endlessinsomnia.com">EndlessInsomnia</a>
         </div>
     </body>
 </html>
